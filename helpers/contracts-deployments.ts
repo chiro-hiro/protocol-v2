@@ -1,4 +1,4 @@
-import { Contract } from 'ethers';
+import { BigNumberish, Contract } from 'ethers';
 import { DRE } from './misc-utils';
 import {
   tEthereumAddress,
@@ -32,6 +32,8 @@ import {
   LendingPoolFactory,
   LendingRateOracleFactory,
   MintableDelegationERC20Factory,
+  HexTestToken,
+  HexTestTokenFactory,
   MintableERC20Factory,
   MockAggregatorFactory,
   MockATokenFactory,
@@ -263,6 +265,17 @@ export const deployAaveProtocolDataProvider = async (
     verify
   );
 
+export const deployHexTestToken = async (
+  args: [string, string, string, string],
+  verify?: boolean
+): Promise<HexTestToken> =>
+  withSaveAndVerify(
+    await new HexTestTokenFactory(await getFirstSigner()).deploy(...args),
+    eContractid.HexTestToken,
+    args,
+    verify
+  );
+
 export const deployMintableERC20 = async (
   args: [string, string, string],
   verify?: boolean
@@ -318,7 +331,7 @@ export const deployVariableDebtToken = async (
   );
 
 export const deployGenericAToken = async (
-  [poolAddress, underlyingAssetAddress, treasuryAddress, name, symbol,incentivesController]: [
+  [poolAddress, underlyingAssetAddress, treasuryAddress, name, symbol, incentivesController]: [
     tEthereumAddress,
     tEthereumAddress,
     tEthereumAddress,
@@ -335,7 +348,6 @@ export const deployGenericAToken = async (
     string,
     tEthereumAddress,
     tEthereumAddress
-
   ] = [poolAddress, underlyingAssetAddress, treasuryAddress, name, symbol, incentivesController];
   return withSaveAndVerify(
     await new ATokenFactory(await getFirstSigner()).deploy(...args),

@@ -1,6 +1,8 @@
 import path from 'path';
 import fs from 'fs';
 import { HardhatUserConfig } from 'hardhat/types';
+import dotenv from 'dotenv';
+dotenv.config();
 // @ts-ignore
 import { accounts } from './test-wallets.js';
 import { eEthereumNetwork } from './helpers/types';

@@ -67,6 +67,7 @@ export enum eContractid {
   LendingPoolImpl = 'LendingPoolImpl',
   LendingPoolConfiguratorImpl = 'LendingPoolConfiguratorImpl',
   LendingPoolCollateralManagerImpl = 'LendingPoolCollateralManagerImpl',
+  HexTestToken = 'HexTestToken',
 }
 
 /*
