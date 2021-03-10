@@ -1,21 +1,10 @@
-import { CommonsConfig } from '../../markets/aave/commons';
-import { AaveConfig } from '../../markets/aave/index';
 import { task } from 'hardhat/config';
-import {
-  loadPoolConfig,
-  ConfigNames,
-  getWethAddress,
-  getTreasuryAddress,
-} from '../../helpers/configuration';
+import { loadPoolConfig, ConfigNames } from '../../helpers/configuration';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { eEthereumNetwork, ICommonConfiguration } from '../../helpers/types';
 import { getParamPerNetwork } from '../../helpers/contracts-helpers';
-
-import { deployContract } from 'ethereum-waffle';
-import { deployHexTestToken } from '../../helpers/contracts-deployments';
+import { deployHexTestToken, deployMockAggregator } from '../../helpers/contracts-deployments';
 import { ZERO_ADDRESS } from '../../helpers/constants';
-import { logger } from 'ethers';
-import BigNumber from 'bignumber.js';
 
 function makeBytes32(val: string): string {
   let tmp = Buffer.alloc(32);
@@ -23,7 +12,7 @@ function makeBytes32(val: string): string {
   return `0x${tmp.toString('hex')}`;
 }
 
-task('full:missing:token', 'Initial missing token')
+task('full:missing:contracts', 'Initial missing contracts')
   .addParam(
     'pool',
     `Pool name to retrieve configuration, supported: ${Object.values(ConfigNames)}`,
@@ -34,16 +23,10 @@ task('full:missing:token', 'Initial missing token')
       await hre.run('set-DRE');
       const network = <eEthereumNetwork>hre.network.name;
       const poolConfig = loadPoolConfig(pool);
-      const { ReserveAssets, ReservesConfig } = poolConfig as ICommonConfiguration;
+      const { ReserveAssets, ChainlinkAggregator, Mocks } = poolConfig as ICommonConfiguration;
 
       const reserveAssets = await getParamPerNetwork(ReserveAssets, network);
-
-      /*deployHexTestToken([
-
-      ])
-      BAT - Hex Trust Test Token (BAT)*/
-
-      //console.log(pool, hre.network.name, reserveAssets, ReservesConfig, poolConfig);
+      const chainlinkAggregator = await getParamPerNetwork(ChainlinkAggregator, network);
 
       const listOfToken = {};
 
@@ -61,6 +44,20 @@ task('full:missing:token', 'Initial missing token')
         }
       }
       console.log('Deployed tokens:', listOfToken);
+      const listOfAggregator = {};
+      const aggregatorEntries = Object.entries(chainlinkAggregator);
+      for (let i = 0; i < aggregatorEntries.length; i++) {
+        const [key, value] = aggregatorEntries[i];
+        if (ZERO_ADDRESS === value) {
+          const aggregator = await deployMockAggregator(Mocks.AllAssetsInitialPrices[key]);
+          listOfAggregator[key] = aggregator.address;
+          console.log(
+            `Deploy missing aggregators ${key}: ${aggregator.address}`,
+            Mocks.AllAssetsInitialPrices[key]
+          );
+        }
+      }
+      console.log('Deployed aggregators:', listOfAggregator);
     } catch (err) {
       console.error(err);
       process.exit(1);
