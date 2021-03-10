@@ -1,14 +1,14 @@
 ```
-        .///.                .///.     //.            .//  `/////////////-
-       `++:++`              .++:++`    :++`          `++:  `++:......---.`
-      `/+: -+/`            `++- :+/`    /+/         `/+/   `++.
-      /+/   :+/            /+:   /+/    `/+/        /+/`   `++.
-  -::/++::`  /+:       -::/++::` `/+:    `++:      :++`    `++/:::::::::.
-  -:+++::-`  `/+:      --++/---`  `++-    .++-    -++.     `++/:::::::::.
-   -++.       .++-      -++`       .++.    .++.  .++-      `++.
-  .++-         -++.    .++.         -++.    -++``++-       `++.
- `++:           :++`  .++-           :++`    :+//+:        `++:----------`
- -/:             :/-  -/:             :/.     ://:         `/////////////-
+        .///.                .///.     //.            .//  `/////////////- 
+       `++:++`              .++:++`    :++`          `++:  `++:......---.` 
+      `/+: -+/`            `++- :+/`    /+/         `/+/   `++.            
+      /+/   :+/            /+:   /+/    `/+/        /+/`   `++.            
+  -::/++::`  /+:       -::/++::` `/+:    `++:      :++`    `++/:::::::::.  
+  -:+++::-`  `/+:      --++/---`  `++-    .++-    -++.     `++/:::::::::.  
+   -++.       .++-      -++`       .++.    .++.  .++-      `++.            
+  .++-         -++.    .++.         -++.    -++``++-       `++.            
+ `++:           :++`  .++-           :++`    :+//+:        `++:----------` 
+ -/:             :/-  -/:             :/.     ://:         `/////////////- 
 ```
 
 # Aave Protocol v2
@@ -155,34 +155,34 @@ gas used: 1555866
 
 5. Initialize lending pool
 - Token deployments in 20 txs instead of 80 txs
-  - Deployed aToken, DebtTokens and Strategy for: AAVE, BAT
+  - Deployed aToken, DebtTokens and Strategy for: AAVE, BAT 
     * gasUsed: debtTokens batch 5597342
     * gasUsed: aTokens and Strategy batch 5639148
-  - Deployed aToken, DebtTokens and Strategy for: BUSD, DAI
+  - Deployed aToken, DebtTokens and Strategy for: BUSD, DAI 
     * gasUsed: debtTokens batch 5597342
     * gasUsed: aTokens and Strategy batch 5639352
-  - Deployed aToken, DebtTokens and Strategy for: ENJ, KNC
+  - Deployed aToken, DebtTokens and Strategy for: ENJ, KNC 
     * gasUsed: debtTokens batch 5597318
     * gasUsed: aTokens and Strategy batch 5639532
-  - Deployed aToken, DebtTokens and Strategy for: LINK, MANA
+  - Deployed aToken, DebtTokens and Strategy for: LINK, MANA 
     * gasUsed: debtTokens batch 5597354
     * gasUsed: aTokens and Strategy batch 5639568
-  - Deployed aToken, DebtTokens and Strategy for: MKR, REN
+  - Deployed aToken, DebtTokens and Strategy for: MKR, REN 
     * gasUsed: debtTokens batch 5597330
     * gasUsed: aTokens and Strategy batch 5639544
-  - Deployed aToken, DebtTokens and Strategy for: SNX, SUSD
+  - Deployed aToken, DebtTokens and Strategy for: SNX, SUSD 
     * gasUsed: debtTokens batch 5597342
     * gasUsed: aTokens and Strategy batch 5639244
-  - Deployed aToken, DebtTokens and Strategy for: TUSD, USDC
+  - Deployed aToken, DebtTokens and Strategy for: TUSD, USDC 
     * gasUsed: debtTokens batch 5597354
     * gasUsed: aTokens and Strategy batch 5639568
-  - Deployed aToken, DebtTokens and Strategy for: USDT, WBTC
+  - Deployed aToken, DebtTokens and Strategy for: USDT, WBTC 
     * gasUsed: debtTokens batch 5597354
     * gasUsed: aTokens and Strategy batch 5639568
-  - Deployed aToken, DebtTokens and Strategy for: WETH, YFI
+  - Deployed aToken, DebtTokens and Strategy for: WETH, YFI 
     * gasUsed: debtTokens batch 5597342
     * gasUsed: aTokens and Strategy batch 5639556
-  - Deployed aToken, DebtTokens and Strategy for: ZRX
+  - Deployed aToken, DebtTokens and Strategy for: ZRX 
     * gasUsed: debtTokens batch 2811278
     * gasUsed: aTokens and Strategy batch 2832698
   - Deploy UNI delegation aware aToken, debts tokens, and strategy
@@ -379,7 +379,7 @@ MockAggregator: 0xEdc8acB70274563C18994bA872a137D1c34888Bd
 LendingPoolCollateralManagerImpl: 0x85c8d563D3548C44e758716D760C188198b270a1
 LendingPoolCollateralManager: 0x85c8d563D3548C44e758716D760C188198b270a1
 WalletBalanceProvider: 0x9A271db798fE24d105F9A4B0b1293A77bad3CB3F
-WETHGateway: 0x086E0C9f15079A3FF5a0359247758453Ed697D65
+WETHGateway: 0x086E0C9f15079A3FF5a0359247758453Ed697D65 
 ```
 
 ## What is Aave?
